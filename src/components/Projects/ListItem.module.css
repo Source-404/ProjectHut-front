@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 350px;
+  width: 400px;
+  min-width: 250px;
+  padding: 1.5rem;
+  background: #17141d;
+  border-radius: 16px;
+  box-shadow: -1rem 0 3rem #000;
+  transition: 0.2s;
+}
+.card:focus-within ~ .card,
+.card:hover ~ .card {
+  transform: translateX(130px);
+}
+.card:hover {
+  transform: translateY(-1rem);
+}
+
+.card:not(:first-child) {
+  margin-left: -130px;
+}
+
+.cardHeader h2:hover {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  text-shadow: none;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
