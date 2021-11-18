@@ -16,23 +16,41 @@ const AuthForm = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    //const enteredName = nameInputRef.current.value;
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    if (isLogin) {
-      const res = await fetch("/users/login", {
-        method: "POST",
-        body: JSON.stringify({
-          email: enteredEmail,
-          password: enteredPassword,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      console.log(data);
+    try {
+      if (isLogin) {
+        const res = await fetch("/users/login", {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        console.log(data);
+      } else {
+        const enteredName = nameInputRef.current.value;
+        const res = await fetch("/users", {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
+            name: enteredName,
+            password: enteredPassword,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
