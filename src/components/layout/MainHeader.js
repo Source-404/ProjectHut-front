@@ -7,7 +7,7 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/loggin">Loggin</Link>
+            <Link to="/login">Login</Link>
           </li>
           <li>
             <Link to="/welcome">Welcome</Link>
