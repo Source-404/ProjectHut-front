@@ -36,6 +36,7 @@ const AuthForm = () => {
         });
         const data = await res.json();
         console.log(data);
+        authCtx.login(data.token);
       } else {
         const enteredName = nameInputRef.current.value;
         const res = await fetch("/users", {

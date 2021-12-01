@@ -11,20 +11,31 @@ const MainHeader = () => {
     <header className={classes.header}>
       <nav>
         <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          {isLoggedIn && (
+          {!isLoggedIn && (
             <li>
-              <Link to="/welcome">Welcome</Link>
+              <Link to="/login">Login / Signup</Link>
             </li>
           )}
+
           <li>
-            <Link to="/gallery">Gallery</Link>
+            <Link to="/welcome">Welcome</Link>
           </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
+
+          {isLoggedIn && (
+            <li>
+              <Link to="/gallery">Gallery</Link>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+          )}
+          {isLoggedIn && (
+            <li>
+              <Link to="/signout">Signout</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
