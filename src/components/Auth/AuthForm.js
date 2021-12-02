@@ -1,9 +1,11 @@
 import { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
+  const navigate = useNavigate();
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -37,6 +39,7 @@ const AuthForm = () => {
         const data = await res.json();
         console.log(data);
         authCtx.login(data.token);
+        navigate("/welcome");
       } else {
         const enteredName = nameInputRef.current.value;
         const res = await fetch("/users", {
@@ -53,6 +56,7 @@ const AuthForm = () => {
         const data = await res.json();
         console.log(data);
         authCtx.login(data.token);
+        navigate("/welcome");
       }
     } catch (e) {
       console.log(e);
