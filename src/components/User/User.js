@@ -3,6 +3,7 @@ import ProfileDescription from "./ProfileDescription";
 import ProjectList from "../Projects/ProjectList";
 import classes from "./User.module.css";
 import AuthContext from "../../store/auth-context";
+import AddProject from "../Projects/AddProject";
 
 const User = () => {
   const authCtx = useContext(AuthContext);
@@ -108,7 +109,10 @@ const User = () => {
           />
         )}
       </div>
-      <ProjectList items={projects} />
+      <div className={classes.container}>
+        <ProjectList items={projects} />
+      </div>
+      <AddProject />
     </>
   );
 };

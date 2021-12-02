@@ -19,3 +19,14 @@
 .projectslist::-webkit-scrollbar-track {
   background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
 }
+
+input[type="text"] {
+  background: transparent;
+  border: none;
+  width: 80%;
+  color: white;
+}
+::placeholder {
+  color: white;
+  opacity: 1;
+}

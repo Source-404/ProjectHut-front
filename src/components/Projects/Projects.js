@@ -61,9 +61,11 @@ const Projects = () => {
   ]);
 
   return (
-    <div className={classes.container}>
-      <ProjectList items={projects} />
-    </div>
+    <>
+      <div className={classes.container}>
+        <ProjectList items={projects} />
+      </div>
+    </>
   );
 };
 
