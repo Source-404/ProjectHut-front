@@ -1,16 +1,79 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import ProfileDescription from "./ProfileDescription";
 import ProjectList from "../Projects/ProjectList";
 import classes from "./User.module.css";
+import AuthContext from "../../store/auth-context";
 
 const User = () => {
-  const [user, setUser] = useState({
-    id: 1,
-    name: "Source Code",
-    email: "source@gmail.com",
-    age: 404,
-    joined: "25th nov 6969",
-  });
+  const authCtx = useContext(AuthContext);
+  const [gotUser, setGotUser] = useState(false);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await fetch("/users/me", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authCtx.token}`,
+          },
+        });
+        const data = await res.json();
+        console.log("from user");
+        console.log(data);
+        if (data.error) throw new Error();
+        setUser(data);
+        setGotUser(true);
+      } catch (e) {
+        console.log(e);
+        setUser({
+          id: 1,
+          name: "Source Code",
+          email: "source@gmail.com",
+          age: 404,
+          joined: "25th nov 6969",
+        });
+        setGotUser(false);
+        console.log("damn");
+      }
+    };
+
+    const getUserProjects = async () => {
+      try {
+        const res = await fetch("/projects", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authCtx.token}`,
+          },
+        });
+        const data = await res.json();
+        console.log("from projects");
+        console.log(data);
+        if (data.error) throw new Error();
+        setProjects(data);
+      } catch (e) {
+        console.log(e);
+        setProjects([
+          {
+            id: 0,
+            title: "No Projects to show ",
+            description:
+              "We had Some problem trying to fetch your projects from The server Please wait for a few Momnents and try again",
+            completed: "false",
+          },
+        ]);
+        setGotUser(false);
+        console.log("damn");
+      }
+    };
+
+    getUser();
+    getUserProjects();
+  }, []);
+
+  const [user, setUser] = useState();
+
   const [projects, setProjects] = useState([
     {
       id: 4,
@@ -35,13 +98,15 @@ const User = () => {
   return (
     <>
       <div className={classes.showBox}>
-        <ProfileDescription
-          name={user.name}
-          email={user.email}
-          age={user.age}
-          joined={user.joined}
-          name={user.name}
-        />
+        {gotUser && (
+          <ProfileDescription
+            name={user.name}
+            email={user.email}
+            age={user.age}
+            joined={user.createdAt}
+            name={user.name}
+          />
+        )}
       </div>
       <ProjectList items={projects} />
     </>
