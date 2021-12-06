@@ -1,12 +1,33 @@
 import FileUpload from "../../UI/FileUpload";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import classes from "./ListItem.module.css";
+import AuthContext from "../../store/auth-context";
+
+const url = "http://localhost:5000";
 
 const ListItem = (props) => {
   const [ready, setReady] = useState(false);
+  const authCtx = useContext(AuthContext);
 
-  const logger = () => {
+  const logger = async () => {
     console.log(props.id);
+
+    try {
+      const res = await fetch(url + `/projects/${props.id}/file`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${authCtx.token}`,
+        },
+      });
+      console.log(res);
+      const data = await res.json();
+      console.log("from get file");
+      console.log(data);
+      if (data.error) throw new Error();
+    } catch (e) {
+      console.log(e);
+      console.log("old file bs");
+    }
   };
 
   const upload = () => {
