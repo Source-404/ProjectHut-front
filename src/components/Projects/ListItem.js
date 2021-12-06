@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import classes from "./ListItem.module.css";
 import AuthContext from "../../store/auth-context";
 
-const url = "http://localhost:5000";
+const url = "https://projecthut.herokuapp.com";
 
 const ListItem = (props) => {
   const [ready, setReady] = useState(false);
