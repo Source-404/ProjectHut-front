@@ -66,7 +66,7 @@ const Projects = () => {
   return (
     <>
       <div className={classes.container}>
-        <ProjectList items={projects} />
+        <ProjectList items={projects} show={false} />
       </div>
     </>
   );

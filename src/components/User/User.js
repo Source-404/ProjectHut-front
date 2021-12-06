@@ -112,7 +112,7 @@ const User = () => {
         )}
       </div>
       <div className={classes.container}>
-        <ProjectList items={projects} />
+        <ProjectList items={projects} show={true} />
       </div>
       <AddProject />
     </>

@@ -7,9 +7,14 @@ const url = "http://localhost:5000";
 
 const ListItem = (props) => {
   const [ready, setReady] = useState(false);
+
   const authCtx = useContext(AuthContext);
 
-  const logger = async () => {
+  const logger = async (e) => {
+    if (e.target.tagName.toLowerCase() === "button") {
+      console.log("upload");
+      return;
+    }
     console.log(props.id);
 
     try {
@@ -44,12 +49,16 @@ const ListItem = (props) => {
       <FileUpload ready={ready} projId={props.id} onConfirm={onConfirm} />
       <div onClick={logger} className={classes.card}>
         <header className={classes.cardHeader}>
-          <p>Nov 16th 2021</p>
+          <p>{props.date}</p>
           <h2>{props.title}</h2>
         </header>
         <p>{props.description}</p>
         <h4>completed: {props.completed}</h4>
-        <button onClick={upload}>upload file</button>
+        {props.show && (
+          <button className={classes.btn} onClick={upload}>
+            Upload file
+          </button>
+        )}
       </div>
     </>
   );

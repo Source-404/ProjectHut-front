@@ -31,7 +31,9 @@ const ProjectList = (props) => {
               id={project._id}
               title={project.title}
               description={project.description}
+              date={project.createdAt}
               completed={project.completed ? "Complete" : "In-Progress"}
+              show={props.show}
             />
           );
         })}
