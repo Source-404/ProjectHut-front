@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import ProjectList from "./ProjectList";
 import classes from "./Projects.module.css";
 import AuthContext from "../../store/auth-context";
+import FileUpload from "../../UI/FileUpload";
 
 const Projects = () => {
   const authCtx = useContext(AuthContext);

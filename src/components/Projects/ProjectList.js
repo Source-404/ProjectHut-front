@@ -28,6 +28,7 @@ const ProjectList = (props) => {
           return (
             <ListItem
               key={project._id}
+              id={project._id}
               title={project.title}
               description={project.description}
               completed={project.completed ? "Complete" : "In-Progress"}
