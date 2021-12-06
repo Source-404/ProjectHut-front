@@ -4,7 +4,7 @@ import classes from "./FileUpload.module.css";
 import { useState, useContext } from "react";
 import AuthContext from "../store/auth-context";
 
-const url = "http://localhost:5000";
+const url = "https://projecthut.herokuapp.com";
 
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onConfirm}></div>;

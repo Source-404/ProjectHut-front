@@ -3,6 +3,8 @@ import AuthContext from "../../store/auth-context";
 
 import classes from "./AddProject.module.css";
 
+const url = "https://projecthut.herokuapp.com";
+
 const AddProject = () => {
   const authCtx = useContext(AuthContext);
 
@@ -18,7 +20,7 @@ const AddProject = () => {
     const enteredStatus = statusInputRef.current.value;
 
     try {
-      const res = await fetch("http://localhost:5000/projects", {
+      const res = await fetch(url + "/projects", {
         method: "POST",
         body: JSON.stringify({
           title: enteredTitle,

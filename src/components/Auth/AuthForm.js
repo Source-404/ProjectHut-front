@@ -4,6 +4,8 @@ import AuthContext from "../../store/auth-context";
 
 import classes from "./AuthForm.module.css";
 
+const url = "https://projecthut.herokuapp.com";
+
 const AuthForm = () => {
   const navigate = useNavigate();
   const nameInputRef = useRef();
@@ -26,7 +28,7 @@ const AuthForm = () => {
 
     try {
       if (isLogin) {
-        const res = await fetch("http://localhost:5000/users/login", {
+        const res = await fetch(url + "/users/login", {
           method: "POST",
           body: JSON.stringify({
             email: enteredEmail,
@@ -42,7 +44,7 @@ const AuthForm = () => {
         navigate("/gallery");
       } else {
         const enteredName = nameInputRef.current.value;
-        const res = await fetch("http://localhost:5000/users", {
+        const res = await fetch(url + "/users", {
           method: "POST",
           body: JSON.stringify({
             email: enteredEmail,

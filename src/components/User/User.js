@@ -5,7 +5,7 @@ import classes from "./User.module.css";
 import AuthContext from "../../store/auth-context";
 import AddProject from "../Projects/AddProject";
 
-const url = "http://localhost:5000";
+const url = "https://projecthut.herokuapp.com";
 
 const User = () => {
   const authCtx = useContext(AuthContext);

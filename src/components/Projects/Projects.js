@@ -5,7 +5,7 @@ import classes from "./Projects.module.css";
 import AuthContext from "../../store/auth-context";
 import FileUpload from "../../UI/FileUpload";
 
-const url = "http://localhost:5000";
+const url = "https://projecthut.herokuapp.com";
 
 const Projects = () => {
   const authCtx = useContext(AuthContext);
