@@ -26,7 +26,7 @@ const AuthForm = () => {
 
     try {
       if (isLogin) {
-        const res = await fetch("/users/login", {
+        const res = await fetch("http://localhost:5000/users/login", {
           method: "POST",
           body: JSON.stringify({
             email: enteredEmail,
@@ -42,7 +42,7 @@ const AuthForm = () => {
         navigate("/gallery");
       } else {
         const enteredName = nameInputRef.current.value;
-        const res = await fetch("/users", {
+        const res = await fetch("http://localhost:5000/users", {
           method: "POST",
           body: JSON.stringify({
             email: enteredEmail,

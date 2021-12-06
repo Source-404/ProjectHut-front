@@ -18,7 +18,7 @@ const AddProject = () => {
     const enteredStatus = statusInputRef.current.value;
 
     try {
-      const res = await fetch("/projects", {
+      const res = await fetch("http://localhost:5000/projects", {
         method: "POST",
         body: JSON.stringify({
           title: enteredTitle,

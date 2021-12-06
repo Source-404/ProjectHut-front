@@ -20,7 +20,7 @@ const ListItem = (props) => {
 
   return (
     <>
-      <FileUpload ready={ready} onConfirm={onConfirm} />
+      <FileUpload ready={ready} projId={props.id} onConfirm={onConfirm} />
       <div onClick={logger} className={classes.card}>
         <header className={classes.cardHeader}>
           <p>Nov 16th 2021</p>

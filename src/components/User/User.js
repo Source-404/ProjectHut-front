@@ -5,6 +5,8 @@ import classes from "./User.module.css";
 import AuthContext from "../../store/auth-context";
 import AddProject from "../Projects/AddProject";
 
+const url = "http://localhost:5000";
+
 const User = () => {
   const authCtx = useContext(AuthContext);
   const [gotUser, setGotUser] = useState(false);
@@ -12,7 +14,7 @@ const User = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch("/users/me", {
+        const res = await fetch(url + "/users/me", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -41,7 +43,7 @@ const User = () => {
 
     const getUserProjects = async () => {
       try {
-        const res = await fetch("/projects", {
+        const res = await fetch(url + "/projects", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

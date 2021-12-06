@@ -5,13 +5,15 @@ import classes from "./Projects.module.css";
 import AuthContext from "../../store/auth-context";
 import FileUpload from "../../UI/FileUpload";
 
+const url = "http://localhost:5000";
+
 const Projects = () => {
   const authCtx = useContext(AuthContext);
 
   useEffect(() => {
     const getAllProjects = async () => {
       try {
-        const res = await fetch("/allProjects", {
+        const res = await fetch(url + "/allProjects", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
